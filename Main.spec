@@ -6,7 +6,7 @@ block_cipher = None
 
 a = Analysis(
     ['Main.py'],
-    pathex=['venv\\Lib\\site-packages'],
+    pathex=['C:\\Users\\Peter\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\cv2'],
     binaries=[],
     datas=[],
     hiddenimports=[],
@@ -35,7 +35,7 @@ exe = EXE(
     upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
-    console=True,
+    console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,

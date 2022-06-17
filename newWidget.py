@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QWidget,QPushButton,QHBoxLayout,QLabel,QLineEdit,QVBoxLayout
+from PyQt6.QtWidgets import QWidget,QPushButton,QHBoxLayout,QLabel,QLineEdit,QVBoxLayout,QMessageBox
 from PyQt6.QtGui import QIcon,QImage
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtCore import QTimer
@@ -10,6 +10,7 @@ import numpy as np
 class widgetMain(QWidget):
     def __init__(self,name_title :str):
         super().__init__()
+        print(cv2.__file__)
         self.setWindowTitle(name_title)
         self.__size =(50,200)
         self.setGeometry(200,30,self.__size[0],self.__size[1])
@@ -70,7 +71,12 @@ class widgetMain(QWidget):
     def controlview(self):
         if not self.__time.isActive():
             self.facetracker = load_model('face.h5')
-            self.__cap = cv2.VideoCapture(int(self.__idxcamwithint.text()))
+            try:
+                self.__cap = cv2.VideoCapture(int(self.__idxcamwithint.text()))
+            except:
+                self.__cap.release()
+                cv2.destroyAllWindows()
+                self.__a()
             self.__time.start(1)
             self.__buttonclick.setText('หยุด')
         else:
@@ -82,3 +88,10 @@ class widgetMain(QWidget):
             cv2.destroyAllWindows()
             # update control_bt text
             self.__buttonclick.setText('เริ่ม')
+    def __a(self):
+        a= QMessageBox()
+        a.setIcon(QMessageBox.Information)
+        a.setText('No see cam!')
+        a.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        a.setWindowTitle("QMessageBox Example")
+        a.show()
