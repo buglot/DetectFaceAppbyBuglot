@@ -5,3 +5,4 @@
 - tensorflow
 - numpy
 - opencv-python
+### โดยที่ เปิดไฟล์ Main.py
