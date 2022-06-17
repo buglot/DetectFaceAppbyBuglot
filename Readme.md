@@ -1,2 +1,7 @@
-โปรแกรมให้ตรวจจับหน้า โดยการเทรน ai เอง 
-โดยที่เทรนแล้ว face.h5
+# FaceDetect!
+
+ไฟล์นี้ต้องการ
+pyqt6
+tensorflow
+numpy
+opencv-python
