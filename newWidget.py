@@ -7,6 +7,7 @@ from tensorflow.keras.models import load_model
 import tensorflow as tf
 import os
 import numpy as np
+import math
 class widgetMain(QWidget):
     def __init__(self,name_title :str):
         super().__init__()
@@ -53,11 +54,11 @@ class widgetMain(QWidget):
                             tuple(np.add(np.multiply(sample_coords[:2], [width,height]).astype(int), 
                                             [0,-30])),
                             tuple(np.add(np.multiply(sample_coords[:2], [width,height]).astype(int),
-                                            [80,0])), 
+                                            [150,0])), 
                                     (255,0,0), -1)
                 
                 # Controls the text rendered
-                cv2.putText(frame, 'face', tuple(np.add(np.multiply(sample_coords[:2], [width,height]).astype(int),
+                cv2.putText(frame, 'face: '+str(int(math.ceil(yhat[0][0][0]*100)))+"%", tuple(np.add(np.multiply(sample_coords[:2], [width,height]).astype(int),
                                                     [0,-5])),
                             cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
 
